@@ -7,8 +7,8 @@ router.get('/', function(request, response, next){
   response.sendFile(path.resolve(__dirname, '../public/views/register.html'));
 }); //end router.get
 
-router.post('/', function(request, response, next){
-  Users.create(request.body, function(err, post){
+router.post('/', function(request, response){
+  Users.create(request.body.username, request.body.password, function(err, post){
     if(err){
       next(err);
     } else {
